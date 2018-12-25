@@ -2,17 +2,13 @@ language: node_js
 node_js:
   - "9"
 dist: trusty
-sudo: false
+sudo: required
 
 branches:
   only:
   - master
 
-cache:
-  directories:
-    - node_modules
-
-install:
+before_script:
   - npm install -g @angular/cli
 
 script:
