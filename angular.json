@@ -20,7 +20,13 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*", 
+                "input": "./config/", 
+                "output": "/assets/config" 
+              }
+
             ],
             "styles": [
               "src/styles.css"
@@ -33,6 +39,10 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "src/assets/config/auth-config.json",
+                  "with": "config/prod/auth-config.json"
                 }
               ],
               "optimization": true,

@@ -1,0 +1,14 @@
+{
+	"stsServer":"https://accounts.google.com",
+	"redirect_url":"http://localhost:4200",
+	"client_id":"778253110926-l1untr9cl5thg9n3vn9ftan5j316nsrg.apps.googleusercontent.com",
+	"response_type":"id_token token",
+	"scope":"openid email profile",
+	"post_logout_redirect_uri":"http://localhost:4200/login",
+	"startup_route":"/user",
+	"forbidden_route":"/forbidden",
+	"unauthorized_route":"/unauthorized",
+	"log_console_warning_active":true,
+	"log_console_debug_active":true,
+	"max_id_token_iat_offset_allowed_in_seconds":"10"
+}

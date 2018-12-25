@@ -23,7 +23,8 @@ import {
 
 export function loadConfig(oidcConfigService: OidcConfigService) {
   console.log('APP_INITIALIZER STARTING');
-  return () => oidcConfigService.load(`${window.location.origin}/assets/config/auth-config.json`);
+  console.log(`${window.location}`);
+  return () => oidcConfigService.load('./assets/config/auth-config.json');
 }
 
 
