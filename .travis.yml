@@ -13,11 +13,10 @@ cache:
     - node_modules
 
 install:
-  - npm install -g yarn
+  - npm install -g @angular/cli
 
 script:
-  - yarn lint
-  - yarn build --base-href https://vincent-rondot.github.io/sample_app-frontend/
+  - ng build --prod --base-href https://vincent-rondot.github.io/sample_app-frontend/
 deploy:
   provider: pages
   skip_cleanup: true
