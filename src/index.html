@@ -10,6 +10,13 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+  <META HTTP-EQUIV='Content-Security-Policy' CONTENT="
+    default-src 'self'; 
+    font-src fonts.gstatic.com; 
+    style-src 'unsafe-inline'; 
+    script-src 'unsafe-eval' 'self'; 
+    connect-src 'self' accounts.google.com www.googleapis.com openidconnect.googleapis.com
+    ">
 </head>
 <body>
   <app-root></app-root>
