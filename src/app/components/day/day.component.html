@@ -1,0 +1,26 @@
+<p>
+    <mat-card>
+        <mat-card-title>
+            {{date.toString()}}
+        </mat-card-title>
+
+        <mat-card-content>
+            <h3>Working Slots</h3>
+            <ul>
+                <li *ngFor="let workingSlot of workingSlots | async; let i = index">
+                    {{workingSlot | json}}
+                </li>
+            </ul>
+
+            <app-workingslot *ngFor="let employer of employers"[date]=date [employer]=employer>
+            </app-workingslot>
+
+        </mat-card-content>
+    </mat-card>
+
+</p>
+
+<div class="left">
+
+    <button (click)="openDialog()">New</button>
+</div>

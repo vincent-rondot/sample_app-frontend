@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 
 @Component({
@@ -11,15 +12,17 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'frontend';
 
+  x = false
   constructor(
     private router: Router,
-    private authService: AuthService
-    ) { }
+    private oidcSecurityService: OidcSecurityService
+  ) { }
 
 
 
   logout() {
-    this.authService.logout();
+    this.oidcSecurityService.logoff();
     this.router.navigate(["login"]);
   }
+
 }

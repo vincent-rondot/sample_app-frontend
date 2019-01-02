@@ -1,0 +1,12 @@
+<div class="right" *ngIf="workingSlots">
+
+  <h3>WorkingSlots</h3>
+  <ul>
+    <li *ngFor="let workingSlot of workingSlots | async; let i = index">
+      {{workingSlot | json}}
+      <button mat-icon-button (click)="delWorkingSlot(i)">
+        <mat-icon aria-label="Delete">delete</mat-icon>
+      </button>
+    </li>
+  </ul>
+</div>
