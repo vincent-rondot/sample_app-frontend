@@ -12,6 +12,8 @@ import { RawsummaryComponent } from './components/rawsummary/rawsummary.componen
 const routes: Routes = [
   { path: 'user', component: UserComponent,   canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent },
+  { path: 'login#', component: LoginComponent },
+
   { path: 'dashboard2', component : Dashboard2Component,   canActivate: [AuthGuard] },
   { path: 'dashboard3', component : Dashboard3Component,   canActivate: [AuthGuard] },
 

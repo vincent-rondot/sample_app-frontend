@@ -1,4 +1,5 @@
-<h2 mat-dialog-title>Add new working slot</h2>
+<h2 mat-dialog-title *ngIf="updateMode">Update working slot</h2>
+<h2 mat-dialog-title *ngIf="!updateMode">Add new working slot</h2>
 
 <mat-dialog-content [formGroup]="form">
   <div class="example-container">
@@ -7,7 +8,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Employer" formControlName="employer" >
+      <mat-select placeholder="Employer" formControlName="employer" [compareWith]="compareSelectValues">
         <mat-option  *ngFor="let employer of employers" [value]="employer">{{employer.name}}</mat-option>
       </mat-select>
     </mat-form-field>

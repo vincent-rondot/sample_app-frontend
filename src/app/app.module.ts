@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { Employer } from './models/employer.model';
 
 import {
   AuthModule,
@@ -60,15 +61,15 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
       // TODO: this is not the better way to handle this... :-/
       // We should be able to simply deserialize the content into a WorkingSlot Object...
       // not sure how to do it....
+      console.log(key," - ",value);
+
       switch(key) {
+
         case "duration":
           return moment.duration(value);
 
         case "date":
-          return new Date()
-
-        default:
-          return value;
+          return new Date(value)
       }
 
       return value;     // return the unchanged property value.}],

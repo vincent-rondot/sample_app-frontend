@@ -3,6 +3,7 @@ import * as moment from 'moment';
 
 
 export interface WorkingSlot {
+    id: string;
     date: Date;
     employer:Employer;
     startTime: string;

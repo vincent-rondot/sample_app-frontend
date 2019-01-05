@@ -6,6 +6,11 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { WorkingSlot } from './../../models/workingslot.model'
 import { AppState } from './../../app.state';
+import { MatDialog, MatDialogConfig } from "@angular/material";
+import { CourseDialogComponent } from './../../components/course-dialog/course-dialog.component';
+import * as moment from 'moment';
+import * as WorkingSlotActions from './../../actions/tutorial.actions';
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-workingslot',
@@ -21,6 +26,8 @@ export class WorkingslotComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
+    private dialog: MatDialog,
+
   ) {
     console.log('Hi!')
    }
@@ -42,6 +49,61 @@ export class WorkingslotComponent implements OnInit {
 
 
     
+  }
+
+  editWorkingSlot(workingSlots) {
+    console.log(workingSlots)
+    console.log (CourseDialogComponent.echo("xxx"))
+    CourseDialogComponent.openDialg(this.dialog, this.store, workingSlots)
+    // this.store.dispatch(new TutorialActions.RemoveWorkingSlot(index) )
+    // this.openDialog(index)
+  }
+
+  // TODO : factorize duplicated code 
+  openDialog(index) {
+
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    console.log(this.date)
+    console.log(this.date.constructor.name)
+
+
+    dialogConfig.data = {
+      workingSlots: this.workingSlots[index]
+    };
+
+
+    const dialogRef = this.dialog.open(CourseDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+        if (data != null){
+          console.log("Dialog output:", data)
+          
+          let t1 = moment(data.date).add(moment.duration(data.startTime))
+          let t2 = moment(data.date).add(moment.duration(data.endTime))
+          let d = moment.duration(t2.diff(t1))
+          console.log(t1)
+          console.log(t2)
+          console.log(d)
+
+          let x: WorkingSlot = {
+            id:  UUID.UUID(),
+            date: data.date,
+            employer: data.employer,
+            startTime: data.startTime,
+            endTime: data.endTime,
+            duration: d,
+            date2: moment(data.date)
+          }
+
+          this.store.dispatch(new WorkingSlotActions.AddWorkingSlot(x))
+        }
+      }
+    );
   }
 
 

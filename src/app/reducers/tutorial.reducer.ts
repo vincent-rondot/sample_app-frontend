@@ -13,6 +13,14 @@ export function reducer(state: WorkingSlot[] = [], action: TutorialActions.Actio
         case TutorialActions.REMOVE_WORKINGSLOT:
             state.splice(action.payload, 1)
             return state;
+        case TutorialActions.UPDATE_WORKINGSLOT:    
+            return state.map(workingSlot => {
+                if (workingSlot.id === action.payload.id) {
+                    return Object.assign({}, action.payload);
+                }
+                else return workingSlot;
+            });
+
         default:
             console.log("unknown action")
             return state;

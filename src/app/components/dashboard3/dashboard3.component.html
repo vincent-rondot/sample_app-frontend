@@ -1,12 +1,9 @@
-<!-- <mat-form-field>
+<p>
+    <mat-form-field>
+        <input matInput [matDatepicker]="dp3" disabled [(ngModel)]="date">
+        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3 disabled="false" [startAt]="startDate"></mat-datepicker>
+    </mat-form-field>
 
-        <input mdInput name="someName" [(ngModel)]="selectedDate" [dpDayPicker]="config" theme="dp-material" attachTo=".mat-input-wrapper" />
-        <dp-date-picker [(ngModel)]="selectedDate" [config]="datePickerConfig"></dp-date-picker>  
-
-</mat-form-field> -->
-
-<mat-form-field>
-    <input matInput [matDatepicker]="dp3" disabled [(ngModel)]="date">
-    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-    <mat-datepicker #dp3 disabled="false" [startAt]="startDate"></mat-datepicker>
-</mat-form-field>
+    <app-day [date]=date></app-day>
+</p>

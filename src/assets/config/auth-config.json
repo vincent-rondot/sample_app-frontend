@@ -1,6 +1,6 @@
 {
 	"stsServer":"https://accounts.google.com",
-	"redirect_url":"http://localhost:4200",
+	"redirect_url":"http://localhost:4200/login",
 	"client_id":"778253110926-l1untr9cl5thg9n3vn9ftan5j316nsrg.apps.googleusercontent.com",
 	"response_type":"id_token token",
 	"scope":"openid email profile",

@@ -11,6 +11,7 @@ import { getWorkingSlotForDay } from './../../reducers/tutorial.reducer';
 import { EmployerService } from '../../services/employer.service';
 import { Employer } from '../../models/employer.model';
 import * as moment from 'moment';
+import { UUID } from 'angular2-uuid';
 
 
 import { Action, createSelector, createFeatureSelector, select } from '@ngrx/store'
@@ -101,6 +102,7 @@ export class DayComponent implements OnInit {
           console.log(d)
 
           let x: WorkingSlot = {
+            id: UUID.UUID(),
             date: data.date,
             employer: data.employer,
             startTime: data.startTime,
