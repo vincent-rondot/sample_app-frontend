@@ -20,7 +20,10 @@ export class AppComponent {
 
   isLoggedIn() {
     return this.oidcSecurityService.getIsAuthorized();
-    this.router.navigate(["login"]);
+  }
+
+  userData() {
+    return this.oidcSecurityService.getUserData()
   }
 
   logout() {
