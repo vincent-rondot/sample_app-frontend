@@ -1,0 +1,9 @@
+<p>
+    <mat-form-field>
+        <input matInput [matDatepicker]="dp3" disabled  [(ngModel)]="date">
+        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3 disabled="false" [startAt]="startDate" ></mat-datepicker>
+    </mat-form-field>
+
+    <app-day [date]=date></app-day>
+</p>

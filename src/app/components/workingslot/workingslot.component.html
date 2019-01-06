@@ -1,0 +1,71 @@
+<!-- <div class="example-container">
+    <mat-form-field>
+      <mat-select placeholder="Employer">
+        <mat-option value="option1">Option1</mat-option>
+        <mat-option value="option1">Option1</mat-option>
+        <mat-option value="option1">Option1</mat-option>
+      </mat-select>
+
+
+    </mat-form-field>
+
+
+  <mat-form-field class="example-full-width">
+        <input matInput [ngxTimepicker]="timepicker" [format]="24"  readonly>
+        <ngx-material-timepicker-toggle [for]="timepicker"></ngx-material-timepicker-toggle>
+        <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+  </mat-form-field>
+</div>
+ -->
+
+<!-- <mat-card>
+  <mat-card-title>
+    XXX
+  </mat-card-title>
+
+  <mat-card-content>
+    <div class="example-container">
+      <mat-form-field>
+        <mat-select placeholder="Employer">
+          <mat-option value="option1">Option1</mat-option>
+          <mat-option value="option1">Option1</mat-option>
+          <mat-option value="option1">Option1</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Select">
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input placeholder="Start" matInput [ngxTimepicker]="timepicker" [format]="24" readonly>
+        <ngx-material-timepicker-toggle [for]="timepicker"></ngx-material-timepicker-toggle>
+        <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input placeholder="End" matInput [ngxTimepicker]="endTimepicker" [format]="24" readonly>
+        <ngx-material-timepicker-toggle [for]="endTimepicker"></ngx-material-timepicker-toggle>
+        <ngx-material-timepicker #endTimepicker></ngx-material-timepicker>
+      </mat-form-field>
+    </div>
+
+  </mat-card-content> -->
+
+
+  <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{employer.name}}</mat-card-title>
+        <mat-card-subtitle>{{employer.email}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p *ngFor='let workingSlot of workingSlots | async'>
+          From: {{workingSlot.startTime}} To: {{workingSlot.endTime}}   ({{workingSlot.duration}})
+          <button mat-icon-button (click)="editWorkingSlot(workingSlot)">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+        </p>
+      </mat-card-content>
+    </mat-card>

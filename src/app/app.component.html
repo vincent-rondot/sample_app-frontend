@@ -52,29 +52,28 @@
 
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-  <span>My First App</span>
+    <span>Working Time App</span>
+    <!-- <div *ngIf="isLoggedIn() | async"> -->
+    <div>
+
+      <button mat-button routerLink="/dashboard2">Daily view</button>
+      <button mat-button routerLink="/dashboard3">Monthly view</button>
+      <button mat-button routerLink="/rawsummary">Summary</button>
+
       <span class="example-fill-remaining-space"></span>
       <span class="align-center"></span>
       <span class="example-spacer"></span>
-      <button mat-button>About</button>
-      <button mat-button>Contact</button>
       <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>dialpad</mat-icon>
-      <span>Redial</span>
-    </button>
-    <button mat-menu-item disabled>
-      <mat-icon>voicemail</mat-icon>
-        <span>Check voicemail</span>
-    </button>
-    <button mat-menu-item  (click)="logout()">
-      <mat-icon>exit_to_app</mat-icon>
-      <span>Logout</span>
-    </button>
-  </mat-menu>
-</mat-toolbar-row>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        {{(userData()| async)?.email}}
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>
