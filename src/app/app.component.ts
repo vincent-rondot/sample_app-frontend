@@ -18,7 +18,10 @@ export class AppComponent {
     private oidcSecurityService: OidcSecurityService
   ) { }
 
-
+  isLoggedIn() {
+    return this.oidcSecurityService.getIsAuthorized();
+    this.router.navigate(["login"]);
+  }
 
   logout() {
     this.oidcSecurityService.logoff();

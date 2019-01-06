@@ -11,7 +11,6 @@ import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { Employer } from './models/employer.model';
 
 import {
   AuthModule,
@@ -31,14 +30,14 @@ import { WorkingslotComponent } from './components/workingslot/workingslot.compo
 import { CourseDialogComponent } from './components/course-dialog/course-dialog.component';
 
 
-import { StoreModule, ActionReducerMap, ActionReducer, MetaReducer } from '@ngrx/store';
+import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { reducer } from './reducers/tutorial.reducer';
 import { RawsummaryComponent } from './components/rawsummary/rawsummary.component';
 
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import {DpDatePickerModule} from 'ng2-date-picker';
+import { DpDatePickerModule } from 'ng2-date-picker';
 import { WorkingSlot } from './models/workingslot.model'
 import * as moment from 'moment';
 
@@ -49,31 +48,33 @@ export function loadConfig(oidcConfigService: OidcConfigService) {
   return () => oidcConfigService.load('./assets/config/auth-config.json');
 }
 
-const ws :WorkingSlot =null
+const ws: WorkingSlot = null
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({
     // keys: ['workingSlots'],
-    keys: [{workingSlots: (key, value) => {
-      // console.log("loading from storage: ", key); // log the current property name, the last is "".
+    keys: [{
+      workingSlots: (key, value) => {
+        // console.log("loading from storage: ", key); // log the current property name, the last is "".
 
 
-      // TODO: this is not the better way to handle this... :-/
-      // We should be able to simply deserialize the content into a WorkingSlot Object...
-      // not sure how to do it....
-      console.log(key," - ",value);
+        // TODO: this is not the better way to handle this... :-/
+        // We should be able to simply deserialize the content into a WorkingSlot Object...
+        // not sure how to do it....
+        console.log(key, " - ", value);
 
-      switch(key) {
+        switch (key) {
 
-        case "duration":
-          return moment.duration(value);
+          case "duration":
+            return moment.duration(value);
 
-        case "date":
-          return new Date(value)
+          case "date":
+            return new Date(value)
+        }
+
+        return value;     // return the unchanged property value.}],
       }
-
-      return value;     // return the unchanged property value.}],
-    }}],
+    }],
     rehydrate: true,
     // restoreDates: false
   })(reducer);
@@ -88,7 +89,6 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     UserComponent,
     Dashboard2Component,
     Dashboard3Component,
-
     DayComponent,
     WorkingslotComponent,
     RawsummaryComponent,
@@ -117,7 +117,8 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
       }
     ),
     ReactiveFormsModule,
-    DpDatePickerModule 
+    DpDatePickerModule,
+    
   ],
   providers: [
     OidcSecurityService,

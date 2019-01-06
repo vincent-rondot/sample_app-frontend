@@ -13,18 +13,24 @@
       </mat-select>
     </mat-form-field>
 
+
     <mat-form-field>
       <div class="toggle-custom-icon-example">
-        <input placeholder="Start" matInput [ngxTimepicker]="timepicker" [format]="24" readonly formControlName="startTime">
-        <ngx-material-timepicker-toggle [for]="timepicker"></ngx-material-timepicker-toggle>
-        <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+          <input placeholder="Start" matInput  formControlName="startTime">
+
+        <!-- <input placeholder="Start" matInput [ngxTimepicker]="timepicker" [format]="24" readonly formControlName="startTime"> -->
+        <!-- <ngx-material-timepicker-toggle [for]="timepicker"></ngx-material-timepicker-toggle>
+        <ngx-material-timepicker #timepicker></ngx-material-timepicker> -->
       </div>
     </mat-form-field>
 
     <mat-form-field>
-      <input placeholder="End" matInput [ngxTimepicker]="endTimepicker" [format]="24" readonly formControlName="endTime">
-      <ngx-material-timepicker-toggle [for]="endTimepicker"></ngx-material-timepicker-toggle>
-      <ngx-material-timepicker #endTimepicker></ngx-material-timepicker>
+
+        <input placeholder="End" matInput  formControlName="endTime">
+
+      <!-- <input placeholder="End" matInput [ngxTimepicker]="endTimepicker" [format]="24" readonly formControlName="endTime"> -->
+      <!-- <ngx-material-timepicker-toggle [for]="endTimepicker"></ngx-material-timepicker-toggle>
+      <ngx-material-timepicker #endTimepicker></ngx-material-timepicker> -->
     </mat-form-field>
 
   </div>

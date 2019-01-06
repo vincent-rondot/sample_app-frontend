@@ -4,13 +4,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EmployerService } from '../../services/employer.service';
 import { Employer } from '../../models/employer.model';
 import { MatDialog, MatDialogConfig } from "@angular/material";
-import { getWorkingSlotForDay } from './../../reducers/tutorial.reducer';
 import * as moment from 'moment';
 import { WorkingSlot } from './../../models/workingslot.model'
 import { Store } from '@ngrx/store';
 import { AppState } from './../../app.state';
 import * as WorkingSlotActions from './../../actions/tutorial.actions';
-import { UUID } from 'angular2-uuid';
+// import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-course-dialog',
@@ -30,10 +29,10 @@ export class CourseDialogComponent implements OnInit {
     private dialogRef: MatDialogRef<CourseDialogComponent>,
     private employerService: EmployerService,
     @Inject(MAT_DIALOG_DATA) data) {
-      console.log(data)
-      this.date = data.date;
-      this.workingSlot = data.workingSlot;
-      this.updateMode = !(this.workingSlot == undefined ||this.workingSlot.id == undefined)
+    console.log(data)
+    this.date = data.date;
+    this.workingSlot = data.workingSlot;
+    this.updateMode = !(this.workingSlot == undefined || this.workingSlot.id == undefined)
   }
 
   ngOnInit() {
@@ -64,9 +63,9 @@ export class CourseDialogComponent implements OnInit {
       .subscribe(employers => this.employers = employers);
   }
 
-  private compareSelectValues(selectedValue, compareValue): boolean {
+  compareSelectValues(selectedValue, compareValue): boolean {
     return selectedValue.id === compareValue.id;
- }
+  }
 
   save() {
     if (this.form.invalid) {
@@ -85,7 +84,7 @@ export class CourseDialogComponent implements OnInit {
 
   static echo(x) {
     return x
-  } 
+  }
 
   static openDialg(dialog: MatDialog, store: Store<AppState>, workingSlot: WorkingSlot) {
     const dialogConfig = new MatDialogConfig();
@@ -106,9 +105,9 @@ export class CourseDialogComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       data => {
-        if (data != null){
+        if (data != null) {
           console.log("Dialog output:", data)
-          
+
           let t1 = moment(data.date).add(moment.duration(data.startTime))
           let t2 = moment(data.date).add(moment.duration(data.endTime))
           let d = moment.duration(t2.diff(t1))
@@ -117,11 +116,13 @@ export class CourseDialogComponent implements OnInit {
           console.log(d)
 
           console.log(workingSlot)
-          let updateMode = !(workingSlot == undefined ||workingSlot.id == undefined)
+          let updateMode = !(workingSlot == undefined || workingSlot.id == undefined)
 
 
           let x: WorkingSlot = {
-            id: updateMode?workingSlot.id:UUID.UUID(),
+            // id: updateMode?workingSlot.id:UUID.UUID(),
+            id: updateMode ? workingSlot.id : "1",
+
             date: data.date,
             employer: data.employer,
             startTime: data.startTime,
@@ -130,7 +131,7 @@ export class CourseDialogComponent implements OnInit {
             date2: moment(data.date)
           }
 
-          
+
           console.log(workingSlot)
           if (updateMode) {
             store.dispatch(new WorkingSlotActions.UpdateWorkingSlot(x))

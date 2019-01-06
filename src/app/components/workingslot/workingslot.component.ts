@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AmazingTimePickerService } from 'amazing-time-picker';
-import { EmployerService } from '../../services/employer.service';
 import { Employer } from '../../models/employer.model';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
@@ -10,7 +8,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import { CourseDialogComponent } from './../../components/course-dialog/course-dialog.component';
 import * as moment from 'moment';
 import * as WorkingSlotActions from './../../actions/tutorial.actions';
-import { UUID } from 'angular2-uuid';
+// import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-workingslot',
@@ -91,7 +89,9 @@ export class WorkingslotComponent implements OnInit {
           console.log(d)
 
           let x: WorkingSlot = {
-            id:  UUID.UUID(),
+            // id:  UUID.UUID(),
+            id:  "1",
+
             date: data.date,
             employer: data.employer,
             startTime: data.startTime,

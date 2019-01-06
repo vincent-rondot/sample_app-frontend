@@ -6,8 +6,6 @@ import {
   MatListModule,MatFormFieldModule, MatSelectModule
 } from '@angular/material';
 
-import { AmazingTimePickerModule } from 'amazing-time-picker'; // this line you need
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 
 @NgModule({
@@ -27,8 +25,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     MatListModule,
     MatFormFieldModule,
     MatSelectModule,
-    AmazingTimePickerModule,
-    NgxMaterialTimepickerModule.forRoot()
+    // NgxMaterialTimepickerModule
   ],
   exports: [
    CommonModule,
@@ -46,8 +43,8 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
    MatListModule,
    MatFormFieldModule,
    MatSelectModule,
-   AmazingTimePickerModule,
-   NgxMaterialTimepickerModule
+  //  AmazingTimePickerModule,
+  //  NgxMaterialTimepickerModule
 
    ],
 })
