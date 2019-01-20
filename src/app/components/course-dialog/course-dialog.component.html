@@ -9,28 +9,21 @@
 
     <mat-form-field>
       <mat-select placeholder="Employer" formControlName="employer" [compareWith]="compareSelectValues">
-        <mat-option  *ngFor="let employer of employers" [value]="employer">{{employer.name}}</mat-option>
+        <mat-option *ngFor="let employer of employers" [value]="employer">{{employer.name}}</mat-option>
       </mat-select>
     </mat-form-field>
 
 
     <mat-form-field>
-      <div class="toggle-custom-icon-example">
-          <input placeholder="Start" matInput  formControlName="startTime">
-
-        <!-- <input placeholder="Start" matInput [ngxTimepicker]="timepicker" [format]="24" readonly formControlName="startTime"> -->
-        <!-- <ngx-material-timepicker-toggle [for]="timepicker"></ngx-material-timepicker-toggle>
-        <ngx-material-timepicker #timepicker></ngx-material-timepicker> -->
-      </div>
+      <input placeholder="Start" matInput [ngxTimepicker]="timepicker" [format]="24" readonly formControlName="startTime">
+      <ngx-material-timepicker-toggle matSuffix [for]="timepicker"></ngx-material-timepicker-toggle>
+      <ngx-material-timepicker #timepicker></ngx-material-timepicker>
     </mat-form-field>
 
     <mat-form-field>
-
-        <input placeholder="End" matInput  formControlName="endTime">
-
-      <!-- <input placeholder="End" matInput [ngxTimepicker]="endTimepicker" [format]="24" readonly formControlName="endTime"> -->
-      <!-- <ngx-material-timepicker-toggle [for]="endTimepicker"></ngx-material-timepicker-toggle>
-      <ngx-material-timepicker #endTimepicker></ngx-material-timepicker> -->
+      <input placeholder="End" matInput [ngxTimepicker]="endTimepicker" [format]="24" readonly formControlName="endTime">
+      <ngx-material-timepicker-toggle matSuffix [for]="endTimepicker"></ngx-material-timepicker-toggle>
+      <ngx-material-timepicker #endTimepicker></ngx-material-timepicker>
     </mat-form-field>
 
   </div>

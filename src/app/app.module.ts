@@ -46,6 +46,9 @@ import { FileSaverModule } from 'ngx-filesaver';
 import {reducers} from './store/reducers/index';
 import { EmailSummaryDialogComponent } from './components/email-summary-dialog/email-summary-dialog.component'
 
+
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+
 export function loadConfig(oidcConfigService: OidcConfigService) {
   console.log('APP_INITIALIZER STARTING');
   console.log(`${window.location}`);
@@ -122,7 +125,8 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     ),
     ReactiveFormsModule,
     DpDatePickerModule,
-    FileSaverModule
+    FileSaverModule,
+    NgxMaterialTimepickerModule.forRoot()
 
   ],
   providers: [
