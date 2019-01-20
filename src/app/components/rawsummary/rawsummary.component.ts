@@ -3,8 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { WorkingSlot } from './../../models/workingslot.model';
 import { AppState } from './../../app.state';
-import * as TutorialActions from './../../actions/tutorial.actions';
-import { getState, getWorkingDays } from './../../reducers/tutorial.reducer';
+import * as TutorialActions from './../../store/actions/tutorial.actions';
+import * as fromStore from './../../store/reducers/index';
 
 @Component({
   selector: 'app-rawsummary',
@@ -15,17 +15,16 @@ export class RawsummaryComponent implements OnInit {
 
   workingSlots: Observable<WorkingSlot[]>;
 
-  constructor(private store: Store<AppState>) { 
-    this.workingSlots = store.select('workingSlots');
-    // this.tutorials = getWorkingDays(store)
+  constructor(private store: Store<fromStore.State>) { 
   }
 
-
-  delWorkingSlot(index) {
-    this.store.dispatch(new TutorialActions.RemoveWorkingSlot(index) )
+  delWorkingSlot(wsId) {
+    console.log("deleting: " , wsId)
+    this.store.dispatch(new TutorialActions.RemoveWorkingSlot(wsId) )
   }
 
   ngOnInit() {
+    this.workingSlots = this.store.select(fromStore.getWorkingSlot);
   }
 
 }

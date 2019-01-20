@@ -31,7 +31,7 @@ import { CourseDialogComponent } from './components/course-dialog/course-dialog.
 
 
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
-import { reducer } from './reducers/tutorial.reducer';
+import { reducer } from './store/reducers/tutorial.reducer';
 import { RawsummaryComponent } from './components/rawsummary/rawsummary.component';
 
 import { localStorageSync } from 'ngrx-store-localstorage';
@@ -40,7 +40,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { WorkingSlot } from './models/workingslot.model'
 import * as moment from 'moment';
+import { MonthComponent } from './components/month/month.component';
 
+import { FileSaverModule } from 'ngx-filesaver';
+import {reducers} from './store/reducers/index';
+import { EmailSummaryDialogComponent } from './components/email-summary-dialog/email-summary-dialog.component'
 
 export function loadConfig(oidcConfigService: OidcConfigService) {
   console.log('APP_INITIALIZER STARTING');
@@ -92,7 +96,9 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     DayComponent,
     WorkingslotComponent,
     RawsummaryComponent,
-    CourseDialogComponent
+    CourseDialogComponent,
+    MonthComponent,
+    EmailSummaryDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -109,16 +115,15 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
       }
     ),
     StoreModule.forRoot(
-      {
-        workingSlots: reducer,
-      },
+      reducers,
       {
         metaReducers
       }
     ),
     ReactiveFormsModule,
     DpDatePickerModule,
-    
+    FileSaverModule
+
   ],
   providers: [
     OidcSecurityService,
@@ -131,7 +136,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [CourseDialogComponent]
+  entryComponents: [CourseDialogComponent, EmailSummaryDialogComponent]
 
 })
 

@@ -6,6 +6,7 @@ import {
   MatListModule,MatFormFieldModule, MatSelectModule
 } from '@angular/material';
 
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import {
     MatListModule,
     MatFormFieldModule,
     MatSelectModule,
-    // NgxMaterialTimepickerModule
+    MatExpansionModule
   ],
   exports: [
    CommonModule,
@@ -43,8 +44,7 @@ import {
    MatListModule,
    MatFormFieldModule,
    MatSelectModule,
-  //  AmazingTimePickerModule,
-  //  NgxMaterialTimepickerModule
+   MatExpansionModule
 
    ],
 })

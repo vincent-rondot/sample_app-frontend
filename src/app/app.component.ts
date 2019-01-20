@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { FileSaverService } from 'ngx-filesaver';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class AppComponent {
   x = false
   constructor(
     private router: Router,
-    private oidcSecurityService: OidcSecurityService
+    private oidcSecurityService: OidcSecurityService,
+    private FileSaverService: FileSaverService
   ) { }
 
   isLoggedIn() {
@@ -29,6 +31,18 @@ export class AppComponent {
   logout() {
     this.oidcSecurityService.logoff();
     this.router.navigate(["login"]);
+  }
+
+  save() {
+      let theJSON = JSON.stringify({x:"y"});
+      let blob = new Blob([theJSON], { type: 'text/json' });
+      // let url= window.URL.createObjectURL(blob);
+      // let uri:SafeUrl = this.sanitizer.bypassSecurityTrustUrl(url);
+      // this.downloadJsonHref = uri;
+
+
+
+      this.FileSaverService.save(blob, "app_backup.json");
   }
 
 }

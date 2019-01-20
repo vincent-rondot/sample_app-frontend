@@ -8,8 +8,8 @@ import * as moment from 'moment';
 import { WorkingSlot } from './../../models/workingslot.model'
 import { Store } from '@ngrx/store';
 import { AppState } from './../../app.state';
-import * as WorkingSlotActions from './../../actions/tutorial.actions';
-// import { UUID } from 'angular2-uuid';
+import * as WorkingSlotActions from './../../store/actions/tutorial.actions';
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-course-dialog',
@@ -86,7 +86,7 @@ export class CourseDialogComponent implements OnInit {
     return x
   }
 
-  static openDialg(dialog: MatDialog, store: Store<AppState>, workingSlot: WorkingSlot) {
+  static openDialog(dialog: MatDialog, store: Store<AppState>, workingSlot: WorkingSlot) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -115,13 +115,13 @@ export class CourseDialogComponent implements OnInit {
           console.log(t2)
           console.log(d)
 
-          console.log(workingSlot)
+          console.log("workingSlot1 ", workingSlot)
           let updateMode = !(workingSlot == undefined || workingSlot.id == undefined)
 
 
           let x: WorkingSlot = {
             // id: updateMode?workingSlot.id:UUID.UUID(),
-            id: updateMode ? workingSlot.id : "1",
+            id: updateMode ? workingSlot.id : UUID.UUID(),
 
             date: data.date,
             employer: data.employer,
@@ -132,7 +132,7 @@ export class CourseDialogComponent implements OnInit {
           }
 
 
-          console.log(workingSlot)
+          console.log("workingSlot: ",workingSlot)
           if (updateMode) {
             store.dispatch(new WorkingSlotActions.UpdateWorkingSlot(x))
 

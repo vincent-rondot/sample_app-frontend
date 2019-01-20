@@ -16,7 +16,6 @@ export class Dashboard3Component implements OnInit {
 
     console.log(this.date)
     console.log(this.date.constructor.name)
-
   }
 
   ngOnInit() {

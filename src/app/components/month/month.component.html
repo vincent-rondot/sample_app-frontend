@@ -1,0 +1,79 @@
+<p *ngFor="let employer of employers$ | async">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{employer.name}}</mat-card-title>
+      <mat-card-subtitle>{{employer.email}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-accordion multi=true>
+        <mat-expansion-panel *ngFor="let day of (getAllDays(employer.id) |async)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{day}}
+            </mat-panel-title>
+            <mat-panel-description>
+              Total : TODO
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p  *ngFor="let ws of getAllWorkingSlot(employer.id, day) | async">
+              From: {{ws.startTime}} To: {{ws.endTime}}   ({{ws.duration}})
+              <button mat-icon-button (click)="editWorkingSlot(ws)">
+                <mat-icon aria-label="Edit">edit</mat-icon>
+              </button>
+          </p>
+<!-- 
+          <p>
+            From: 15h40 To: 17h40 (3h30)
+            <button mat-icon-button>
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+          </p> -->
+
+        </mat-expansion-panel>
+
+<!-- 
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Mardi 2 devcembre
+            </mat-panel-title>
+            <mat-panel-description>
+              7h
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>
+            From: 5h40 To: 10h40 (3h30)
+            <button mat-icon-button>
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+          </p>
+
+          <p>
+            From: &5h40 To: 17h40 (3h30)
+            <button mat-icon-button>
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+          </p>
+
+        </mat-expansion-panel> -->
+
+
+
+
+
+      </mat-accordion>
+      Total :TODO
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="send()">Send</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</p>
+<!-- <div class="right">
+  <h3>WorkingSlots</h3>
+  <ul>
+    <li *ngFor="let workingSlot of workingSlots | async; let i = index">
+      {{workingSlot | json}}
+    </li>
+  </ul>
+</div> -->

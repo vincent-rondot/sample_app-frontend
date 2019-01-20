@@ -16,3 +16,15 @@ export interface WorkingSlot {
     // toDate: Date;
 
 }
+
+
+export interface MonthlyReport {
+    month: Date;
+    employerId: string;
+}
+
+export interface DailyReport {
+    day: Date;
+    employerId: string;
+    workingSlots: WorkingSlot[];
+}
