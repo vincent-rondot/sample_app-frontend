@@ -6,13 +6,15 @@ import { WorkingSlot } from './../../models/workingslot.model'
 import { createSelector } from '@ngrx/store';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../app.state';
-import { getWorkingSlotForMonth, sameDay } from './../../store/reducers/tutorial.reducer';
+import { getWorkingSlotForMonth, sameDay, sameMonth } from './../../store/reducers/tutorial.reducer';
 import { tap, map } from 'rxjs/operators';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import * as fromStore from './../../store/reducers/index';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { CourseDialogComponent } from './../../components/course-dialog/course-dialog.component';
 import { EmailSummaryDialogComponent } from './../../components/email-summary-dialog/email-summary-dialog.component';
+import { take } from 'rxjs/operators';
+import * as moment from 'moment';
 
 
 EmailSummaryDialogComponent
@@ -30,18 +32,15 @@ export class MonthComponent implements OnInit {
 
 
   constructor(
-    private employerService: EmployerService,
     private store: Store<AppState>,
     private dialog: MatDialog,
   ) { }
 
 
   ngOnInit() {
-    this.employers$ = this.employerService.getEmployers()
-
+    this.employers$ =  this.store.select(fromStore.getEmployers);
 
     this.workingSlots = this.store.select(fromStore.getWorkingSlotForMonth(this.date));
-
   }
 
   ngOnChanges() {
@@ -51,13 +50,13 @@ export class MonthComponent implements OnInit {
 
   editWorkingSlot(workingSlots) {
     console.log(workingSlots)
-    console.log (CourseDialogComponent.echo("xxx"))
+    console.log(CourseDialogComponent.echo("xxx"))
     CourseDialogComponent.openDialog(this.dialog, this.store, workingSlots)
 
   }
 
   getAllDays(employerId) {
-    console.log("getAllDays")
+    // console.log("getAllDays")
     return this.workingSlots.pipe(
       map(
         (wss: WorkingSlot[]) => {
@@ -72,7 +71,7 @@ export class MonthComponent implements OnInit {
           return Object.values(allDays)
         }
       ),
-      tap(x => console.log("getAllDays result:", x))
+      // tap(x => console.log("getAllDays result:", x))
     )
   }
 
@@ -88,10 +87,51 @@ export class MonthComponent implements OnInit {
     )
   }
 
+  getDayTotal(employerId: string, day: Date) {
+    return this.workingSlots.pipe(
+      map(
+        wss => wss
+          .filter(ws => ws.employer.id == employerId)
+          .filter(ws => sameDay(ws.date, day))
+          .reduce((total, ws) => {
+            return total.add(ws.duration)
+          },moment.duration() )
+      ),
+      tap(x => console.log("getDayTotal result:", x))
+    )
+  }
 
-  send() {
-    console.log("send...")
-    EmailSummaryDialogComponent.openDialog(this.dialog)
+  getMonthTotal(employerId: string) {
+    return this.workingSlots.pipe(
+      map(
+        wss => wss
+          .filter(ws => ws.employer.id == employerId)
+          .reduce((total, ws) => {
+            return total.add(ws.duration)
+          },moment.duration() )
+      ),
+      tap(x => console.log("getMonthTotal result:", x))
+    )
+  }
+
+
+  send(employerId) {
+
+
+    console.log("send...", employerId)
+
+    let ws = this.workingSlots.pipe(
+      take(1),
+      map(
+        wss => wss
+          .filter(ws => ws.employer.id == employerId)))
+      .subscribe(wss => {
+        console.log(wss)
+        console.log("xxx")
+        EmailSummaryDialogComponent.openDialog(this.dialog, employerId, wss, this.date)
+      })
+
+
   }
 }
 

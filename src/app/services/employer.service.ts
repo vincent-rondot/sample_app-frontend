@@ -21,4 +21,8 @@ export class EmployerService {
   getEmployers(): Observable<Employer[]> {
     return of(EMPLOYERS);
   }
+
+  getEmployer(employerId: string): Observable<Employer> {
+    return of(EMPLOYERS.filter(e => e.id = employerId)[0]);
+  }
 }

@@ -35,7 +35,6 @@ export class DayComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private dialog: MatDialog,
-    private employerService: EmployerService,
   ) {
   }
 
@@ -49,11 +48,18 @@ export class DayComponent implements OnInit {
   }
 
   getEmployers(): void {
-    this.employerService.getEmployers()
-      .subscribe(employers => {
-        this.employers = employers;
-        console.log('employers: ', employers)
-      });
+    let employers = this.store.select(fromStore.getEmployers);
+    employers.subscribe(employers => {
+      this.employers = employers;
+      console.log('employers: ', employers)
+    });
+
+
+    // this.employerService.getEmployers()
+    //   .subscribe(employers => {
+    //     this.employers = employers;
+    //     console.log('employers: ', employers)
+    //   });
   }
 
   new() {

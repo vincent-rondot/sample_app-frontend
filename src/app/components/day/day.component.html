@@ -1,16 +1,16 @@
 <p>
     <mat-card>
         <mat-card-title>
-            {{date.toString()}}
+            {{date | dateFormat}}
         </mat-card-title>
 
         <mat-card-content>
             <h3>Working Slots</h3>
-            <ul>
+            <!-- <ul>
                 <li *ngFor="let workingSlot of workingSlots | async; let i = index">
                     {{workingSlot | json}}
                 </li>
-            </ul>
+            </ul> -->
 
             <app-workingslot *ngFor="let employer of employers"[date]=date [employer]=employer>
             </app-workingslot>

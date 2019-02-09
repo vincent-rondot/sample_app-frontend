@@ -62,7 +62,7 @@
       </mat-card-header>
       <mat-card-content>
         <p *ngFor='let workingSlot of workingSlots | async'>
-          From: {{workingSlot.startTime}} To: {{workingSlot.endTime}}   ({{workingSlot.duration}})
+          From: {{workingSlot.startTime}} To: {{workingSlot.endTime}}   ({{workingSlot.duration.hours()}}h:{{workingSlot.duration.minutes()}}min)
           <button mat-icon-button (click)="editWorkingSlot(workingSlot)">
             <mat-icon aria-label="Edit">edit</mat-icon>
           </button>

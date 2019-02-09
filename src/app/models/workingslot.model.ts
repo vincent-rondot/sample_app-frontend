@@ -18,6 +18,8 @@ export interface WorkingSlot {
 }
 
 
+
+
 export interface MonthlyReport {
     month: Date;
     employerId: string;

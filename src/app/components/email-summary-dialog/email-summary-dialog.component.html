@@ -1,6 +1,29 @@
-<h2 mat-dialog-title >Send monthly report by email</h2>
+<h2 mat-dialog-title>Send monthly report by email</h2>
 
-<mat-dialog-content>
+<mat-dialog-content [formGroup]="emailForm">
+
+  <div class="example-container">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="To" formControlName="to" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Cc" formControlName="cc" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Subject" formControlName="subject" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Body" formControlName="body"></textarea>
+    </mat-form-field>
+  </div>
+
+  <a href="mailto:{{emailForm.controls['to'].value}}?
+subject={{emailForm.controls['subject'].value}}&
+cc={{emailForm.controls['cc'].value}}&
+body={{emailForm.controls['body'].value | escapeNewLine }}
+"
+  target="_top">Send Mail</a>
+
 
 </mat-dialog-content>
 

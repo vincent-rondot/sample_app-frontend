@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { CustomMaterialModule } from './material.module';
 import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
+import { EscapeNewLinePipe, DateFormatPipe, DurationFormatPipe } from './pipes';
+
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -101,7 +103,10 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     RawsummaryComponent,
     CourseDialogComponent,
     MonthComponent,
-    EmailSummaryDialogComponent
+    EmailSummaryDialogComponent,
+    EscapeNewLinePipe,
+    DateFormatPipe,
+    DurationFormatPipe
   ],
   imports: [
     BrowserModule,

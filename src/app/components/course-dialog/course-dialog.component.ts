@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { EmployerService } from '../../services/employer.service';
 import { Employer } from '../../models/employer.model';
 import { MatDialog, MatDialogConfig } from "@angular/material";
@@ -8,6 +8,7 @@ import * as moment from 'moment';
 import { WorkingSlot } from './../../models/workingslot.model'
 import { Store } from '@ngrx/store';
 import { AppState } from './../../app.state';
+import * as fromStore from './../../store/reducers/index';
 import * as WorkingSlotActions from './../../store/actions/tutorial.actions';
 import { UUID } from 'angular2-uuid';
 
@@ -27,7 +28,7 @@ export class CourseDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CourseDialogComponent>,
-    private employerService: EmployerService,
+    private store: Store<AppState>,
     @Inject(MAT_DIALOG_DATA) data) {
     console.log(data)
     this.date = data.date;
@@ -41,7 +42,7 @@ export class CourseDialogComponent implements OnInit {
     console.log(this.workingSlot)
     if (this.workingSlot != undefined) {
       this.form = this.fb.group({
-        date: [this.workingSlot.date, Validators.required],
+        date: new FormControl({value: this.workingSlot.date, disabled: true}, Validators.required),
         employer: [this.workingSlot.employer, Validators.required],
         startTime: [this.workingSlot.startTime],
         endTime: [this.workingSlot.endTime]
@@ -59,8 +60,8 @@ export class CourseDialogComponent implements OnInit {
   }
 
   getEmployers(): void {
-    this.employerService.getEmployers()
-      .subscribe(employers => this.employers = employers);
+    let employers = this.store.select(fromStore.getEmployers);
+    employers.subscribe(employers => this.employers = employers);
   }
 
   compareSelectValues(selectedValue, compareValue): boolean {
@@ -145,6 +146,4 @@ export class CourseDialogComponent implements OnInit {
     );
   }
 }
-
-
 

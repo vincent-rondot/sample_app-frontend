@@ -65,15 +65,19 @@ export const getWorkingSlotForMonth = (date: Date) =>
     //     return state.filter(x => sameMonth(x.date, date))
     // }
     (state: State) => {
-        console.log("getWorkingSlotForMonth")
+        console.log("getWorkingSlotForMonth: ", state.workingSlots)
         return state.workingSlots.filter(x => sameMonth(x.date, date))
     }
 
 
 export function sameDay(d1, d2) {
-    return d1.getFullYear() === d2.getFullYear() &&
+    console.log()
+    let res = d1.getFullYear() === d2.getFullYear() &&
         d1.getMonth() === d2.getMonth() &&
         d1.getDate() === d2.getDate();
+        console.log("compare sameDay: ", d1, "/",d2, ">", res )
+
+    return res
 }
 
 export function sameMonth(d1, d2) {
