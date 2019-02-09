@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EmployerService } from '../../services/employer.service';
 import { Employer } from '../../models/employer.model';
 import { MatDialog, MatDialogConfig } from "@angular/material";
@@ -42,7 +42,7 @@ export class CourseDialogComponent implements OnInit {
     console.log(this.workingSlot)
     if (this.workingSlot != undefined) {
       this.form = this.fb.group({
-        date: new FormControl({value: this.workingSlot.date, disabled: true}, Validators.required),
+        date: [this.workingSlot.date, Validators.required],
         employer: [this.workingSlot.employer, Validators.required],
         startTime: [this.workingSlot.startTime],
         endTime: [this.workingSlot.endTime]
@@ -65,7 +65,9 @@ export class CourseDialogComponent implements OnInit {
   }
 
   compareSelectValues(selectedValue, compareValue): boolean {
-    return selectedValue.id === compareValue.id;
+    return selectedValue != undefined && 
+    compareValue != undefined && 
+    selectedValue.id === compareValue.id;
   }
 
   save() {
@@ -146,4 +148,6 @@ export class CourseDialogComponent implements OnInit {
     );
   }
 }
+
+
 

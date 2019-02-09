@@ -20,28 +20,30 @@ export const initialState: State = {
 
 
 // Section 2
-export function reducer(state: State = initialState, action: TutorialActions.Actions) {
+export function reducer(state: State = initialState) {
 
     // Section 3
-    switch (action.type) {
-        // case TutorialActions.ADD_WORKINGSLOT:
-        //     return { workingSlots: [...state.workingSlots, action.payload] };
-        // case TutorialActions.REMOVE_WORKINGSLOT:
-        //     return { workingSlots: state.workingSlots.filter(workingSlot => workingSlot.id != action.payload) };
-        // case TutorialActions.UPDATE_WORKINGSLOT:
-        //     return {
-        //         workingSlots: state.workingSlots.map(workingSlot => {
-        //             if (workingSlot.id === action.payload.id) {
-        //                 return Object.assign({}, action.payload);
-        //             }
-        //             else return workingSlot;
-        //         })
-        //     };
+    // switch (action.type) {
+    //     // case TutorialActions.ADD_WORKINGSLOT:
+    //     //     return { workingSlots: [...state.workingSlots, action.payload] };
+    //     // case TutorialActions.REMOVE_WORKINGSLOT:
+    //     //     return { workingSlots: state.workingSlots.filter(workingSlot => workingSlot.id != action.payload) };
+    //     // case TutorialActions.UPDATE_WORKINGSLOT:
+    //     //     return {
+    //     //         workingSlots: state.workingSlots.map(workingSlot => {
+    //     //             if (workingSlot.id === action.payload.id) {
+    //     //                 return Object.assign({}, action.payload);
+    //     //             }
+    //     //             else return workingSlot;
+    //     //         })
+    //     //     };
 
-        default:
-            console.log("unknown action")
-            return state;
-    }
+    //     default:
+    //         console.log("unknown action")
+    //         return state;
+    // }
+
+    return state;
 }
 
 export const getEmployers =
