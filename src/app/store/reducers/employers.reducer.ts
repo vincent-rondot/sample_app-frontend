@@ -13,8 +13,8 @@ export interface State {
 export const initialState: State = {
     employers: [
         { id: '1', email: "vincent.rondot@gmail.com", name: 'Vincent Rondot' },
-        { id: '2', email: "dh.sarah.r@gmail.com", name: "Sarah d'Hardiville" },
-        { id: '3', email: "xxx@gmail.com", name: "Other..." },
+        { id: '2', email: "dh.sarah.r@gmail.com", name: "Julien" },
+        { id: '3', email: "dh.sarah.r@gmail.com", name: "Marie-Aude" },
     ],
 };
 
