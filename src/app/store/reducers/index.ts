@@ -13,7 +13,6 @@ export interface State {
 export const reducers: ActionReducerMap<State> = {
   workingSlots: fromWorkingSlots.reducer,
   employers: fromEmployers.reducer
-
 };
 
 

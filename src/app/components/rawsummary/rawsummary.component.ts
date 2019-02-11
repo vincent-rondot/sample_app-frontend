@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { WorkingSlot } from './../../models/workingslot.model';
-import { AppState } from './../../app.state';
+import { State } from './../../store/reducers/index';
 import * as TutorialActions from './../../store/actions/tutorial.actions';
 import * as fromStore from './../../store/reducers/index';
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from './../../app.state';
+import { State } from './../../store/reducers/index';
 import { WorkingSlot } from './../../models/workingslot.model'
 import * as WorkingSlotActions from './../../store/actions/tutorial.actions';
 import { Observable } from 'rxjs/Observable';
@@ -33,7 +33,7 @@ export class DayComponent implements OnInit {
 
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<State>,
     private dialog: MatDialog,
   ) {
   }

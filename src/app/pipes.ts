@@ -19,6 +19,9 @@ export class DurationFormatPipe implements PipeTransform {
 @Pipe({ name: 'escapeNewLine' })
 export class EscapeNewLinePipe implements PipeTransform {
   transform(s: string): string {
+    // return s.replace(new RegExp('\n', 'g'), '%0D%0A')
     return s.replace(new RegExp('\n', 'g'), '%0D%0A')
+
+    
   }
 }

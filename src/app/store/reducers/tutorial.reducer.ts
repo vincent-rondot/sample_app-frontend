@@ -14,9 +14,15 @@ export const initialState: State = {
 
 // Section 2
 export function reducer(state: State = initialState, action: TutorialActions.Actions) {
+    console.log("action: ", action)
+    if (state.workingSlots == undefined) {
+        console.error("state.workingSlots == undefined during an action")
+        return reducer(state, action)
+    }
 
     // Section 3
     switch (action.type) {
+        case TutorialActions.ADD_WORKINGSLOT:
         case TutorialActions.ADD_WORKINGSLOT:
             return { workingSlots: [...state.workingSlots, action.payload] };
         case TutorialActions.REMOVE_WORKINGSLOT:
@@ -32,7 +38,9 @@ export function reducer(state: State = initialState, action: TutorialActions.Act
             };
 
         default:
-            console.log("unknown action")
+            console.log("unknown action :", action)
+            console.log("state :", state)
+
             return state;
     }
 }
@@ -40,6 +48,9 @@ export function reducer(state: State = initialState, action: TutorialActions.Act
 
 export const getWorkingSlot =
     (state: State) => {
+        if (state.workingSlots == undefined) {
+            return []
+        }
         return state.workingSlots
     }
 
@@ -54,7 +65,8 @@ export const getWorkingSlotForDay = (date: Date) =>
     //     return state.filter(x => sameDay(x.date, date))
     // }
     (state: State) => {
-        return state.workingSlots.filter(x => {
+        console.log("getWorkingSlotForDay - state:", state)
+        return getWorkingSlot(state).filter(x => {
             console.log(x)
             return sameDay(x.date, date)
         })
@@ -69,7 +81,7 @@ export const getWorkingSlotForMonth = (date: Date) =>
     // }
     (state: State) => {
         console.log("getWorkingSlotForMonth: ", state.workingSlots)
-        return state.workingSlots.filter(x => sameMonth(x.date, date))
+        return getWorkingSlot(state).filter(x => sameMonth(x.date, date))
     }
 
 

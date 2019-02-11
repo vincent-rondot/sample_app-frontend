@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { WorkingSlot } from './../../models/workingslot.model'
 import { createSelector } from '@ngrx/store';
 import { Store } from '@ngrx/store';
-import { AppState } from './../../app.state';
+import { State } from './../../store/reducers/index';
 import { getWorkingSlotForMonth, sameDay, sameMonth } from './../../store/reducers/tutorial.reducer';
 import { tap, map } from 'rxjs/operators';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
@@ -32,7 +32,7 @@ export class MonthComponent implements OnInit {
 
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<State>,
     private dialog: MatDialog,
   ) { }
 

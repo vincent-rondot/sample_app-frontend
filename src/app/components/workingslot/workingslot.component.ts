@@ -3,7 +3,7 @@ import { Employer } from '../../models/employer.model';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { WorkingSlot } from './../../models/workingslot.model'
-import { AppState } from './../../app.state';
+import { State } from './../../store/reducers/index';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { CourseDialogComponent } from './../../components/course-dialog/course-dialog.component';
 import * as moment from 'moment';
@@ -24,7 +24,7 @@ export class WorkingslotComponent implements OnInit {
 
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<State>,
     private dialog: MatDialog,
 
   ) {

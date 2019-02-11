@@ -7,7 +7,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import * as moment from 'moment';
 import { WorkingSlot } from './../../models/workingslot.model'
 import { Store } from '@ngrx/store';
-import { AppState } from './../../app.state';
+import { State } from './../../store/reducers/index';
 import * as fromStore from './../../store/reducers/index';
 import * as WorkingSlotActions from './../../store/actions/tutorial.actions';
 import { UUID } from 'angular2-uuid';
@@ -28,7 +28,7 @@ export class CourseDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CourseDialogComponent>,
-    private store: Store<AppState>,
+    private store: Store<State>,
     @Inject(MAT_DIALOG_DATA) data) {
     console.log(data)
     this.date = data.date;
@@ -89,7 +89,7 @@ export class CourseDialogComponent implements OnInit {
     return x
   }
 
-  static openDialog(dialog: MatDialog, store: Store<AppState>, workingSlot: WorkingSlot) {
+  static openDialog(dialog: MatDialog, store: Store<State>, workingSlot: WorkingSlot) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;

@@ -6,7 +6,7 @@ import { WorkingSlot } from './../../models/workingslot.model'
 import { EmployerService } from '../../services/employer.service';
 import { take } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { AppState } from './../../app.state';
+import { State } from './../../store/reducers/index';
 import * as fromStore from './../../store/reducers/index';
 import { Pipe, PipeTransform } from '@angular/core';
 import * as moment from 'moment';
@@ -28,7 +28,7 @@ export class EmailSummaryDialogComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<EmailSummaryDialogComponent>,
-    private store: Store<AppState>,
+    private store: Store<State>,
 
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) data) {

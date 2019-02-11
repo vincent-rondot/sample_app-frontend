@@ -45,11 +45,11 @@ import * as moment from 'moment';
 import { MonthComponent } from './components/month/month.component';
 
 import { FileSaverModule } from 'ngx-filesaver';
-import {reducers} from './store/reducers/index';
+import { reducers } from './store/reducers/index';
 import { EmailSummaryDialogComponent } from './components/email-summary-dialog/email-summary-dialog.component'
 
 
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 export function loadConfig(oidcConfigService: OidcConfigService) {
   console.log('APP_INITIALIZER STARTING');
@@ -60,6 +60,12 @@ export function loadConfig(oidcConfigService: OidcConfigService) {
 const ws: WorkingSlot = null
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  // return localStorageSync({
+  //   keys: ['state'],
+  //   rehydrate: true,
+  //   // restoreDates: false
+  // })(reducer);
+
   return localStorageSync({
     // keys: ['workingSlots'],
     keys: [{
@@ -83,7 +89,7 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 
         return value;     // return the unchanged property value.}],
       }
-    }],
+    },"employers"],
     rehydrate: true,
     // restoreDates: false
   })(reducer);

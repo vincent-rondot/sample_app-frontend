@@ -1,7 +1,11 @@
 <h2 mat-dialog-title *ngIf="updateMode">Update working slot</h2>
 <h2 mat-dialog-title *ngIf="!updateMode">Add new working slot</h2>
 
-<mat-dialog-content [formGroup]="form">
+
+<!-- style="overflow:visible;" is a workarround because the timepicker does not work on iphone...
+seems to be related to position=fixed not working well on iphone....
+-->
+<mat-dialog-content [formGroup]="form" style="overflow:visible;">
   <div class="example-container">
     {{form.get('date').value | dateFormat}}
     <mat-form-field>
@@ -15,7 +19,9 @@
       <input placeholder="Start" matInput [ngxTimepicker]="timepicker" [format]="24" readonly
         formControlName="startTime">
       <ngx-material-timepicker-toggle matSuffix [for]="timepicker"></ngx-material-timepicker-toggle>
+      <!-- <ngx-material-timepicker #timepicker style="position: fixed"></ngx-material-timepicker> -->
       <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+
     </mat-form-field>
 
     <mat-form-field>
