@@ -53,6 +53,18 @@ export class WorkingslotComponent implements OnInit {
   }
 
 
+  new() {
+    let x: WorkingSlot = {
+      id: undefined,
+      date: this.date,
+      employer: this.employer,
+      startTime: undefined,
+      endTime: undefined,
+      duration: undefined,
+      date2: undefined
+    }
+    CourseDialogComponent.openDialog(this.dialog, this.store, x)
+  }
 }
 
 function sameDay(d1, d2) {
