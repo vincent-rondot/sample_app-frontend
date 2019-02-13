@@ -58,7 +58,7 @@ export class WorkingslotComponent implements OnInit {
       id: undefined,
       date: this.date,
       employer: this.employer,
-      startTime: undefined,
+      startTime: this.employer.defaultStartTime,
       endTime: undefined,
       duration: undefined,
       date2: undefined

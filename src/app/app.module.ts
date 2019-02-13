@@ -89,7 +89,9 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 
         return value;     // return the unchanged property value.}],
       }
-    },"employers"],
+    },
+      // "employers",
+    ],
     rehydrate: true,
     // restoreDates: false
   })(reducer);
