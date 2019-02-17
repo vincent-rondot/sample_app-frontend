@@ -50,6 +50,8 @@ import { EmailSummaryDialogComponent } from './components/email-summary-dialog/e
 
 
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 export function loadConfig(oidcConfigService: OidcConfigService) {
   console.log('APP_INITIALIZER STARTING');
@@ -139,7 +141,8 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     ReactiveFormsModule,
     DpDatePickerModule,
     FileSaverModule,
-    NgxMaterialTimepickerModule.forRoot()
+    NgxMaterialTimepickerModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
   ],
   providers: [

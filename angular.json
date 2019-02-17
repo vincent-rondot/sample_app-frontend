@@ -24,11 +24,11 @@
               "src/assets",
               "src/404.html",
               {
-                "glob": "**/*", 
-                "input": "./config/", 
-                "output": "/assets/config" 
-              }
-
+                "glob": "**/*",
+                "input": "./config/",
+                "output": "/assets/config"
+              },
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.css"
@@ -62,7 +62,8 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "serviceWorker": true
             }
           }
         },
@@ -98,7 +99,8 @@
               "src/favicon.ico",
               "src/apple-touch-icon.png",
               "src/assets",
-              "src/404.html"
+              "src/404.html",
+              "src/manifest.webmanifest"
             ]
           }
         },
