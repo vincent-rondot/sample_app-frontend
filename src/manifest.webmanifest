@@ -4,8 +4,8 @@
   "short_name": "WorkTrackingApp",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
-  "scope": "/",
-  "start_url": "/",
+  "scope": "/sample_app-frontend/",
+  "start_url": "/sample_app-frontend/",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
