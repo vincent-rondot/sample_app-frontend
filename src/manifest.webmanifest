@@ -1,6 +1,6 @@
 {
   "name": "WorkTrackingApp",
-  "display": "browser",
+  "display": "fullscreen",
   "short_name": "WorkTrackingApp",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
