@@ -22,6 +22,11 @@
     connect-src 'self' accounts.google.com www.googleapis.com openidconnect.googleapis.com;
     ">
   <link rel="manifest" href="manifest.webmanifest">
+
+  <!-- For compatibility with IOS https://github.com/GoogleChromeLabs/pwacompat -->
+  <script async src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.8/pwacompat.min.js"
+  integrity="sha384-uONtBTCBzHKF84F6XvyC8S0gL8HTkAPeCyBNvfLfsqHh+Kd6s/kaS4BdmNQ5ktp1"
+  crossorigin="anonymous"></script>
   <meta name="theme-color" content="#1976d2">
 </head>
 <body>
