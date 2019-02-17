@@ -55,9 +55,14 @@ export class AuthService {
     if (window.location.hash) {
       this.oidcSecurityService.authorizedCallback();
 
+      //Not ideal... 
+      //1) We should get an event, after Auth is done
+      //2) We should use the router of the parent instead of the href...
       window.opener.document.location.href = "./user";
-      window.close()
-
+      setTimeout(function () {
+        window.close();
+      }, 2000);
     }
   }
 }
+
