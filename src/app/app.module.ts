@@ -200,6 +200,8 @@ export class AppModule {
            break; 
         } 
      } 
+     openIDImplicitFlowConfiguration.trigger_authorization_result_event = this.oidcConfigService.clientConfiguration.openIDImplicitFlowConfiguration;
+     
       const authWellKnownEndpoints = new AuthWellKnownEndpoints();
       authWellKnownEndpoints.setWellKnownEndpoints(this.oidcConfigService.wellKnownEndpoints);
 
