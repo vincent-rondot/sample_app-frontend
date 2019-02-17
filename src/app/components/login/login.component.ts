@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 
 @Component({
@@ -12,7 +13,9 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private oidcSecurityService: OidcSecurityService
+    ) { }
   
   username: string;
   password: string;
@@ -28,7 +31,11 @@ export class LoginComponent implements OnInit {
     // }else {
     //   alert("Invalid credentials");
     // }
-    this.authService.login();
+    // this.authService.login();
+    this.oidcSecurityService.authorize((authUrl) => {
+      // handle the authorrization URL
+      window.open(authUrl, '_blank', 'locationbar=0,titlebar=0,toolbar=0,location=0,menubar=0,navigationbar=0');
+  });
   }
 }
 
