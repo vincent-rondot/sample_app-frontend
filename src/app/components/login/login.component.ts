@@ -15,15 +15,15 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private oidcSecurityService: OidcSecurityService
-    ) { }
-  
+  ) { }
+
   username: string;
   password: string;
-  
+
   ngOnInit() {
   }
-  
-  login() : void {
+
+  login(): void {
     // if(this.username == 'admin' && this.password == 'admin'){
     //   localStorage.setItem('token', '1');
     //   this.authService.login();
@@ -32,10 +32,13 @@ export class LoginComponent implements OnInit {
     //   alert("Invalid credentials");
     // }
     // this.authService.login();
-    this.oidcSecurityService.authorize((authUrl) => {
-      // handle the authorrization URL
-      window.open(authUrl, '_blank', 'locationbar=0,titlebar=0,toolbar=0,location=0,menubar=0,navigationbar=0');
-  });
+
+    this.oidcSecurityService.authorize();
+
+    // this.oidcSecurityService.authorize((authUrl) => {
+    //   // handle the authorrization URL
+    //   window.open(authUrl, '_blank', 'locationbar=0,titlebar=0,toolbar=0,location=0,menubar=0,navigationbar=0');
+    // });
   }
 }
 

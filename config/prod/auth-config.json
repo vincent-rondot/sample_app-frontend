@@ -14,7 +14,7 @@
 	"storage":"localStorage",
 	"silent_renew":true,
 	"silent_renew_url":"https://vincent-rondot.github.io/sample_app-frontend/silent-renew.html",
-	"trigger_authorization_result_event":true
+	"trigger_authorization_result_event":false
 
 }
 
