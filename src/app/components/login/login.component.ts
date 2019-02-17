@@ -33,12 +33,22 @@ export class LoginComponent implements OnInit {
     // }
     // this.authService.login();
 
-    this.oidcSecurityService.authorize();
+    // this.oidcSecurityService.authorize();
 
-    // this.oidcSecurityService.authorize((authUrl) => {
-    //   // handle the authorrization URL
-    //   window.open(authUrl, '_blank', 'locationbar=0,titlebar=0,toolbar=0,location=0,menubar=0,navigationbar=0');
-    // });
+    this.oidcSecurityService.authorize((authUrl) => {
+      // handle the authorrization URL
+
+
+      var that = this;
+      window.addEventListener('message', function(this, e){
+        let hash = e.data.hash;
+        console.log("hash received")
+        that.oidcSecurityService.authorizedImplicitFlowCallback(hash);
+      })
+      console.log(authUrl)
+      console.log(authUrl)
+      window.open(authUrl, '_blank', 'width=350,height=250');
+    });
   }
 }
 

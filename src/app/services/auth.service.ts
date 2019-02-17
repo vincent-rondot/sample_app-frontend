@@ -53,7 +53,14 @@ export class AuthService {
   private doCallbackLogicIfRequired() {
     console.log(window.location.hash)
     if (window.location.hash) {
-      this.oidcSecurityService.authorizedImplicitFlowCallback();
+      var authData = {
+        hash: window.location.hash.substr(1)
+      };
+      console.log(authData)
+      window.opener.postMessage(authData, window.location.origin);
+      window.close();
+
+      // this.oidcSecurityService.authorizedImplicitFlowCallback();
 
       //Not ideal... 
       //1) We should get an event, after Auth is done
