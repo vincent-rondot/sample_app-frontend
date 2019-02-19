@@ -34,15 +34,17 @@ export class AppComponent {
   }
 
   save() {
-      let theJSON = JSON.stringify({x:"y"});
+      let theJSON = JSON.stringify( localStorage.getItem("workingSlots"));
       let blob = new Blob([theJSON], { type: 'text/json' });
       // let url= window.URL.createObjectURL(blob);
       // let uri:SafeUrl = this.sanitizer.bypassSecurityTrustUrl(url);
       // this.downloadJsonHref = uri;
 
-
-
       this.FileSaverService.save(blob, "app_backup.json");
+  }
+
+  getSaveContent() {
+    return localStorage.getItem("workingSlots");
   }
 
 }
