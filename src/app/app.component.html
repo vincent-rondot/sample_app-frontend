@@ -52,10 +52,12 @@
 
 
 <mat-toolbar color="primary">
-  <mat-toolbar-row *ngIf="!(isLoggedIn() | async)">
+  <!-- <mat-toolbar-row *ngIf="!(isLoggedIn() | async)">
     <span>Working Time App</span>
-  </mat-toolbar-row>
-  <mat-toolbar-row *ngIf="isLoggedIn() | async">
+  </mat-toolbar-row> -->
+  <!-- <mat-toolbar-row *ngIf="isLoggedIn() | async"> -->
+  <mat-toolbar-row>
+
     <span>Working Time App</span>
 
     <button mat-button routerLink="/dashboard2">Daily view</button>
@@ -72,6 +74,8 @@
         <mat-icon>save_alt</mat-icon>
         <span>Save</span>
       </button>
+      <a href="mailto:vincent.rondot@gmail.com?body={{getSaveContent()}}"
+        target="_top">Save By Mail</a>
       <button mat-menu-item (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
